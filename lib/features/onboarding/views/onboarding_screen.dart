@@ -8,87 +8,138 @@ class OnboardingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Inventory Management",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF298DBE),
-                  ),
-                ),
-                Text(
-                  "Track inventory, get low-stock alerts, and simplify restocking - all in one place.",
-                  style: TextStyle(fontSize: 19),
-                ),
-              ],
-            ),
-          ),
-
-          Stack(
-            children: [
-              // Positioned(
-              //   child: SvgPicture.asset(
-              //     'assets/svgs/cart.svg',
-              //     ) 
-              //   ),
-              // Positioned(
-              //   child: SvgPicture.asset(
-              //   'assets/svgs/inventory.svg',
-              //   ) 
-              // ),
-
-            ],
-          ),
-          
-          Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 18),
-            child: Row(
-              spacing: 12,
-              children: [
-                Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      
-                      backgroundColor: const Color(0xFF344054),
-                      foregroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      minimumSize: Size(double.infinity, 50)
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // Header Section
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 36),
+                  Text(
+                    "Inventory management",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: const Color(0xFF298DBE),
+                      letterSpacing: -0.5,
                     ),
-                    child: const Text("Log in", style: TextStyle(fontSize: 16),),
                   ),
-                ),
-            
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => 
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => EnterPhoneNoView())),
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      minimumSize: Size(double.infinity, 50)
+                  const SizedBox(height: 12),
+                  Text(
+                    "Track inventory, get low-stock alerts, and simplify restocking - all in one place.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: const Color(0xFF344054),
+                      height: 1.4,
                     ),
-                    child: const Text("Register", style: TextStyle(fontSize: 16),),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+
+            const SizedBox(height: 20),
+
+            Expanded(
+              child: Stack(
+                children: [
+                  // Handcart illustration positioned on the left-center
+                  Positioned(
+                    left: -0,
+                    right: 90,
+                    top: 0,
+                    bottom: 0,
+                    child: SvgPicture.asset(
+                      'assets/svgs/cart.svg',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                  // Floating inventory cards positioned on the right
+                  Positioned(
+                    right: 20,
+                    top: 0,
+                    bottom: 100,
+                    width: 145,
+                    child: SvgPicture.asset(
+                      'assets/svgs/inventory.svg',
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 20),
+
+            // Button Section
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 24.0,
+                right: 24.0,
+                bottom: 32.0,
+                top: 12.0,
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF2A3447),
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        minimumSize: const Size(double.infinity, 54),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        "Log in",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (_) => const EnterPhoneNoView()),
+                      ),
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: const Color(0xFF298DBE),
+                        side: const BorderSide(
+                          color: Color(0xFFB3D9EC),
+                          width: 1.5,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(28),
+                        ),
+                        minimumSize: const Size(double.infinity, 54),
+                        elevation: 0,
+                      ),
+                      child: const Text(
+                        "Register",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

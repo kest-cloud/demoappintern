@@ -106,9 +106,9 @@ class _EnterBusinessDetailsViewState extends State<EnterBusinessDetailsView> {
             ),
             CustomDropdown(label: 'Country', value: 'Select', isDropdown: true, onTap: () {}),
             CustomDropdown(label: 'State', value: 'Select', isDropdown: true, onTap: () {}),
-            const CustomDropdown(label: 'Address', value: 'Select'),
-            const SizedBox(height: 16),
-            const Text(
+            CustomDropdown(label: 'Address', value: 'Select'),
+            SizedBox(height: 16),
+            Text(
               "Referral code",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
@@ -117,9 +117,9 @@ class _EnterBusinessDetailsViewState extends State<EnterBusinessDetailsView> {
               "Enter the code from agent",
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
-            const SizedBox(height: 16),
-            const CustomDropdown(label: 'Enter code', value: '2462898'),
-            const SizedBox(height: 24),
+             SizedBox(height: 16),
+             CustomDropdown(label: 'Enter code', value: '2462898'),
+             SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               height: 48,

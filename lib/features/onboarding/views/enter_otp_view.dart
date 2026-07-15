@@ -1,4 +1,5 @@
 import 'package:demoappintern/features/onboarding/views/enter_business_details_view.dart';
+import 'package:demoappintern/features/onboarding/widgets/enable_notifs.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 
@@ -13,6 +14,14 @@ class _EnterOtpViewState extends State<EnterOtpView> {
   final TextEditingController _otpController = TextEditingController();
   final FocusNode _focusNode = FocusNode();
   final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) showEnableNotifsSheet(context);
+    });
+  }
 
   @override
   void dispose() {
@@ -41,11 +50,11 @@ class _EnterOtpViewState extends State<EnterOtpView> {
     );
 
     final submittedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Colors.grey.shade400),
+      border: Border.all(color: Colors.green),
     );
 
     final errorPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Colors.red.shade300),
+      border: Border.all(color: Colors.red),
     );
 
     return Scaffold(
@@ -95,10 +104,15 @@ class _EnterOtpViewState extends State<EnterOtpView> {
                 },
                 onCompleted: (pin) {
                   if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (_) => const EnterBusinessDetailsView()),
-                    );
+
+                   Future.delayed(const Duration(milliseconds: 600), () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EnterBusinessDetailsView(),
+                        ),
+                      );
+                    });
                   }
                 },
               ),

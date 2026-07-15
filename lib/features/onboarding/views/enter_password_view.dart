@@ -8,6 +8,14 @@ class EnterPasswordView extends StatefulWidget {
 }
 
 class _EnterPasswordViewState extends State<EnterPasswordView> {
+  late TextEditingController _passwordController;
+
+  @override
+  void initState() {
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +37,18 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
                     value: 1.0,
                     strokeWidth: 3,
                     backgroundColor: Colors.grey.shade200,
-                    valueColor: const AlwaysStoppedAnimation<Color>(Color(0xFF2B88D8)),
+                    valueColor: const AlwaysStoppedAnimation<Color>(
+                      Color(0xFF2B88D8),
+                    ),
                   ),
                 ),
-                const Text('2/2', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                const Text(
+                  '2/2',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                ),
               ],
             ),
-          )
+          ),
         ],
       ),
       body: Padding(
@@ -46,7 +59,11 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
             const SizedBox(height: 16),
             const Text(
               "Let’s secure your\naccount",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, height: 1.2),
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w600,
+                height: 1.2,
+              ),
             ),
             const SizedBox(height: 8),
             const Text(
@@ -56,18 +73,18 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
             const SizedBox(height: 32),
             TextField(
               obscureText: true,
-              controller: TextEditingController(text: '123456789012'), // fake dots
+              controller: _passwordController,
               decoration: InputDecoration(
                 labelText: 'Password',
-                labelStyle: TextStyle(color: Colors.grey.shade600),
-                suffixIcon: Icon(Icons.visibility_outlined, color: Colors.grey.shade500),
+                labelStyle: TextStyle(color: Colors.grey),
+                suffixIcon: Icon(Icons.visibility_outlined, color: Colors.grey),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(color: Colors.grey.shade300),
+                  borderSide: BorderSide(color: Colors.grey),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -94,7 +111,9 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF2B88D8),
                   elevation: 0,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
                 ),
                 child: const Text(
                   'Register',
@@ -133,10 +152,7 @@ class _EnterPasswordViewState extends State<EnterPasswordView> {
           const SizedBox(width: 12),
           Text(
             text,
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey.shade700,
-            ),
+            style: TextStyle(fontSize: 14, color: Colors.grey.shade700),
           ),
         ],
       ),

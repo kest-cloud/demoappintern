@@ -8,47 +8,40 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<Offset> _slideAnimation;
-
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 1000),
-    );
-
-    _slideAnimation = Tween<Offset>(
-      begin: const Offset(0, 3),
-      end: Offset.zero,          
-    ).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeOutCubic,
-      ),
-    );
-
-    _controller.forward();
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => OnboardingScreen()));
-    });
-  }
+      if (!mounted) return;
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (_) => const OnboardingScreen(),
+        ),
+      );
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SlideTransition(
-          position: _slideAnimation,
+        child: TweenAnimationBuilder<Offset>(
+          tween: Tween(
+            begin: const Offset(0, 3),
+            end: Offset.zero,
+          ),
+          duration: const Duration(milliseconds: 1200),
+          curve: Curves.easeOutCubic,
+          builder: (context, offset, child) {
+            return FractionalTranslation(
+              translation: offset,
+              child: child,
+            );
+          },
           child: Image.asset(
             'assets/splash.png',
           ),
