@@ -4,6 +4,8 @@ import 'package:demoappintern/core/widgets/bottomSheet.dart';
 import 'package:demoappintern/core/widgets/form_field_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/app_routes.dart';
+
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -98,7 +100,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
           child: Center(child: Text('Don`t have an account?')),
         ),
         OutlinedButton(
-          onPressed: () {},
+          onPressed: () {Navigator.pushNamed(context, AppRoutes.phoneScreen);},
           style: OutlinedButton.styleFrom(
             side: BorderSide(color: AppColors.primary),
             foregroundColor: AppColors.primary,
