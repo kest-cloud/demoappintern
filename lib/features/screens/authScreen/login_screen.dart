@@ -6,6 +6,8 @@ import 'package:demoappintern/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../onboarding/views/enter_phone_no_view.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -137,7 +139,7 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           width: MediaQuery.of(context).size.width,
           child: OutlinedButton(
-            onPressed: () {},
+            onPressed: () {Navigator.pushNamed(context, AppRoutes.phoneScreen);},
             style: OutlinedButton.styleFrom(
               side: BorderSide(color: AppColors.primary),
               foregroundColor: AppColors.primary,
