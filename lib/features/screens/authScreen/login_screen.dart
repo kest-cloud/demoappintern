@@ -57,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 errorBuilder: (_, __, ___) =>
                     Icon(Icons.image, color: AppColors.greyBorder, size: 40),
               ),
-              formSection(),
+              SingleChildScrollView(child: formSection()),
               Spacer(),
               registerSection(),
             ],
