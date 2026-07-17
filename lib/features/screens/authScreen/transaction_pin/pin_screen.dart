@@ -18,34 +18,70 @@ class _PinScreenState extends State<PinScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Column(children: [
-          pinSection()
-      ],)),
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [pinSection()],
+        ),
+      ),
     );
   }
 
-  Widget pinSection(){
+  Widget pinSection() {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Timed Out', style: TextStyle(fontSize: 30),),
-          const SizedBox(height: 10,),
+          Text('Timed Out', style: TextStyle(fontSize: 30)),
+          const SizedBox(height: 10),
           Text('Enter your 4 digit PIN to continue'),
-          const SizedBox(height: 15,),
-          Pinput(
-            controller: pinCtrl,
-            length: 4,
-            autofocus: true,
-            onCompleted: (pin){context.read<AuthProvider>().validatePin(context, pin);},
-            defaultPinTheme: PinTheme(height: 40, width: 50, decoration: BoxDecoration(border: Border.all(color: AppColors.greyBorder))),
-            focusedPinTheme: PinTheme(height: 40, width: 50, decoration: BoxDecoration(border: Border.all(color: AppColors.primary))),
-            errorPinTheme: PinTheme(height: 40, width: 50, decoration: BoxDecoration(border: Border.all(color: AppColors.error))),
+          const SizedBox(height: 15),
+          Center(
+            child: Pinput(
+              controller: pinCtrl,
+              length: 4,
+              autofocus: true,
+              onCompleted: (pin) {
+                context.read<AuthProvider>().validatePin(context, pin);
+              },
+              defaultPinTheme: PinTheme(
+                height: 40,
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.greyBorder),
+                ),
+              ),
+              focusedPinTheme: PinTheme(
+                height: 40,
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.primary),
+                ),
+              ),
+              errorPinTheme: PinTheme(
+                height: 40,
+                width: 50,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.error),
+                ),
+              ),
+            ),
           ),
 
-          const SizedBox(height: 15,),
-          InkWell(onTap:  (){Navigator.pushNamed(context, AppRoutes.resetPin);}, child: Text('Forget PIN?'))
+          const SizedBox(height: 15),
+          InkWell(
+            onTap: () {
+              Navigator.pushNamed(context, AppRoutes.resetPin);
+            },
+            child: Text(
+              'Forget PIN?',
+              style: TextStyle(
+                color: AppColors.primary,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
         ],
       ),
     );
