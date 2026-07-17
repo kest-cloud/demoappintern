@@ -24,7 +24,7 @@ class AuthProvider extends ChangeNotifier {
         context,
         'Incorrect login details, try again.',
         icon: 'icons/cancel.png',
-        iconColor: AppColors.errorLight,
+        // iconColor: AppColors.errorLight,
         color: AppColors.error,
       );
     }
@@ -37,7 +37,7 @@ class AuthProvider extends ChangeNotifier {
       if(pin ==validPin){
         Navigator.pushReplacementNamed(context, AppRoutes.home);
       }else{
-        showMessageSheet(context, 'Incorrect PIN, try again', icon: 'icons/cancel.png');
+        showMessageSheet(context, 'Incorrect PIN, try again', icon: 'icons/cancel.png', color: AppColors.error);
       }
     }
   }
