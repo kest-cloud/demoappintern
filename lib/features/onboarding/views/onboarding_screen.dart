@@ -1,3 +1,4 @@
+import 'package:demoappintern/core/app_routes.dart';
 import 'package:demoappintern/features/onboarding/views/enter_phone_no_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -87,7 +88,7 @@ class OnboardingScreen extends StatelessWidget {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {Navigator.pushNamed(context, AppRoutes.login);},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2A3447),
                         foregroundColor: Colors.white,

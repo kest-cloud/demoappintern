@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
             end: Offset.zero,
           ),
           duration: const Duration(milliseconds: 1200),
-          curve: Curves.easeOutCubic,
+          curve: Curves.easeInOutBack,
           builder: (context, offset, child) {
             return FractionalTranslation(
               translation: offset,
